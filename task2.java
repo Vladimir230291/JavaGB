@@ -1,7 +1,3 @@
-package task2;
-
-import netscape.javascript.JSObject;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Objects;
@@ -10,7 +6,7 @@ import java.util.Stack;
 
 public class task2 {
     public static void main(String[] args) throws Exception {
-        try (FileReader fr = new FileReader("task2\\fileJSON.txt")) {
+        try (FileReader fr = new FileReader("fileJSON.txt")) {
             Scanner scan = new Scanner(fr);
             String json = scan.nextLine();
 
