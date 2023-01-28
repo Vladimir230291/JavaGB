@@ -33,7 +33,7 @@ public class task2_2 {
         return null;
     }
     //Пузырьковая сортировка массива с логированием
-    static int[] sortedArrayBuble(int[] arr) throws IOException {
+    static int[] sortedArrayBuble(int[] arr) {
         try {
             Logger logger = Logger.getLogger(task2_2.class.getName());
             FileWriter fr = new FileWriter("task2\\log.txt", false);
