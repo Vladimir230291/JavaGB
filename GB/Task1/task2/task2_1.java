@@ -35,7 +35,8 @@ public class task2_1 {
                 .append(" AND country = " + arg[3])
                 .append(" AND city = " + arg[5]);
         System.out.println(arg[7]);
-        if (!arg[7].contains("null") ) request.append(" AND age = ").append(arg[7]);
+        System.out.println(arg[7].equals("null"));
+        if (!arg[7].equals("null") ) request.append(" AND age = ").append(arg[7]);
 
         System.out.println(request);
     }

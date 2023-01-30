@@ -1,20 +1,30 @@
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class stepic {
+
     public static void main(String[] args) {
-        final String regex = "[A-z]";
-        final String string = "{\"name\":\"Ivanov\", \"country\":\"Russia\", \"city\":\"Moscow\", \"age\":\"null\"}";
-
-        final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
-        final Matcher matcher = pattern.matcher(string);
-
-        while (matcher.find()) {
-            System.out.println("Полное соответствие: " + matcher.group(0));
-
-            for (int i = 1; i <= matcher.groupCount(); i++) {
-                System.out.println("Группа " + i + ": " + matcher.group(i));
+        List<String> listPlanets = Arrays.asList("Mars", "Jupiter", "Pluton", "Earth", "Pluton", "Mars", "Pluton");
+        List<Integer> counts = new ArrayList<>();
+        List<String> planetsName = new ArrayList<>();
+        for (String planet : listPlanets) {
+            if (!planetsName.contains(planet)){
+                planetsName.add(planet);
+                counts.add(1);
+            }
+            else {
+                int index = planetsName.indexOf(planet);
+                counts.set(index, counts.get(index)+1);
             }
         }
+        for (int i = 0; i < counts.size(); i++) {
+            System.out.printf("%s : %d\n",planetsName.get(i),counts.get(i));
+
+        }
+
+
     }
+
+
 }
+
