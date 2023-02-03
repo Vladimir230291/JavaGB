@@ -6,7 +6,7 @@ dequeue() - возвращает первый элемент из очереди
 first() - возвращает первый элемент из очереди, не удаляя.
  */
 
-import java.util.Arrays;
+
 import java.util.LinkedList;
 
 public class task4_2 {
