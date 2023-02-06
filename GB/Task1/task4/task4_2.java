@@ -1,4 +1,4 @@
-package task4;
+package GB.Task1.task4;
 /*
 Реализуйте очередь с помощью LinkedList со следующими методами:
 enqueue() - помещает элемент в конец очереди,
