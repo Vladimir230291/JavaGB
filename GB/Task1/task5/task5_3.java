@@ -6,7 +6,6 @@ public class task5_3 {
     public static void main(String[] args){
         int[] arr = { 12, 11, 13, 5, 6, 7 };
 
-        // Function call
         task5_3 task = new task5_3();
         task.sort(arr);
 
