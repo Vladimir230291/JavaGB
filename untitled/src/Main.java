@@ -1,26 +1,10 @@
-/*
-
-    Написать метод, который будет запрашивать у пользователя критерий (или критерии) фильтрации и выведет ноутбуки,
-    отвечающие фильтру. Критерии фильтрации можно хранить в Map. Например:
-
-    “Введите цифру, соответствующую необходимому критерию:
-    1 - ОЗУ
-    2 - Объем ЖД
-    3 - Операционная система
-    4 - Цвет …
-
-    Далее нужно запросить минимальные значения для указанных критериев - сохранить параметры фильтрации можно также в Map.
-
-    Отфильтровать ноутбуки их первоначального множества и вывести проходящие по условиям.
- */
-
 import java.util.*;
 
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         List<noteBook> noteBooks = new ArrayList<>();
+
         noteBook noteBook = new noteBook("Windows", "ASUS", 8,
                 "SSD", 512, "Intel");
         noteBooks.add(noteBook);
@@ -34,20 +18,68 @@ public class Main {
                 "SSD", 512, "Intel");
         noteBooks.add(noteBook);
         noteBook = new noteBook("Linux", "Samsung", 4,
-                "SSD", 256, "AMD");
+                "HDD", 256, "AMD");
         noteBooks.add(noteBook);
-        
+        noteBook = new noteBook("Linux", "Samsung", 16,
+                "HDD", 1024, "AMD");
+        noteBooks.add(noteBook);
+
+        searchNoteBook(noteBooks);
+    }
+
+
+    static void searchNoteBook(List<noteBook> inputList){
+        ArrayList<noteBook> noteBooksForSearch = new ArrayList<>(inputList);
+        Scanner input = new Scanner(System.in);
         System.out.println("""
                 Введите цифру, соответствующую необходимому критерию:
-                1 - ОЗУ
-                2 - Объём ЖД
-                3 - Операционная система
-                4 - Модель процессора
+                1 - ОЗУ.
+                2 - Объём ЖД.
+                3 - Операционная система.
+                4 - Модель процессора.
+                5 - Вывести весь список.
                 """);
-        int inputSearch = scanner.nextInt();
+        int originSearch = input.nextInt();
+        if (originSearch == 1) {
+            System.out.print("Введите какой минимальный объем памяти необходим: ");
+            int secondSearch = input.nextInt();
+            for (noteBook nb:noteBooksForSearch){
+                if (nb.getMemorySize() >= secondSearch){
+                    System.out.println(nb);
+                }
+            }
+        } else if (originSearch == 2) {
+            System.out.print("Какой минимальный обьем необходим: ");
+            int secondSearch = input.nextInt();
+            for (noteBook nb: noteBooksForSearch) {
+                if (nb.getDiskCapacity() >= secondSearch){
+                    System.out.println(nb);
+                }
+            }
+        } else if (originSearch == 3) {
+            System.out.println("Какую операционную систему искать: ");
+            String secondSearch = input.next().toLowerCase();
+            for (noteBook nb: noteBooksForSearch){
+                if (nb.getOS().toLowerCase().equals(secondSearch)){
+                    System.out.println(nb);
+                }
 
+            }
+        } else if (originSearch == 4) {
+            System.out.println("Введите модель процессора(AMD,Intel): ");
+            String secondSearch = input.next().toLowerCase();
+            for (noteBook nb:noteBooksForSearch) {
+                if (nb.getModelCPU().toLowerCase().equals(secondSearch)){
+                    System.out.println(nb);
+                }
+            }
+        } else if (originSearch == 5) {
+            noteBooksForSearch.forEach(System.out::println);
+        }
+        else System.out.println("Нет такого поля");
 
 
     }
+
 
 }
