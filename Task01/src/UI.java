@@ -14,7 +14,7 @@ public class UI{
     public static void addNewMemberFamily(int chose){
         while (true){
             if (chose == 1){
-
+                break;
             }
         }
     }
