@@ -1,7 +1,9 @@
+package NoteBook_task.src;
+
 import java.util.*;
 
 
-public class Main {
+public class App {
     public static void main(String[] args) {
         List<noteBook> noteBooks = new ArrayList<>();
 

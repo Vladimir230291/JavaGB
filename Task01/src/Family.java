@@ -1,37 +1,31 @@
+package Task01.src;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Family {
+public  class Family {
     private String firstName, secondName, birthDay;
+    private int familyStatus;
 
-    public void setMember(String firstName, String secondName) {
-        if (!firstName.isEmpty() && !secondName.isEmpty()) {
+    Family(String firstName, String secondName,int year,int mouth,int day) {
             this.firstName = firstName;
             this.secondName = secondName;
-            this.birthDay = null;
-
-        } else System.out.println("Не корректный ввод");
-    }
-
-    public void setBirthDay(int year, int mouth, int day) {
-        if (year <= LocalDate.now().getYear() + 1 && mouth <= 12 && day <= 31)
+        if (year < LocalDate.now().getYear() + 1 && mouth <= 12 && day <= 31)
             this.birthDay = LocalDate.of(year, mouth, day).toString();
-        else System.out.println("проверьте коректность введеной даты");
+        else this.birthDay = null;
+        }
 
-    }
+//    public String getFirstName() {
+//        return firstName;
+//    }
 
+//    public String getSecondName() {
+//        return secondName;
+//    }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public String getBirthDay() {
-        return birthDay;
-    }
+//    public String getBirthDay() {
+//        return birthDay;
+//    }
 
     @Override
     public String toString() {

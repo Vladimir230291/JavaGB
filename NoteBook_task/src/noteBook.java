@@ -1,3 +1,5 @@
+package NoteBook_task.src;
+
 import java.util.Objects;
 
 public class noteBook {

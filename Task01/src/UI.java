@@ -1,3 +1,5 @@
+package Task01.src;
+
 public class UI{
     public static void startProgram(){
         System.out.println("""
@@ -11,13 +13,5 @@ public class UI{
                 6. - Сохранить текущее древо
                 0. - Выйти из программы""");
     }
-    public static void addNewMemberFamily(int chose){
-        while (true){
-            if (chose == 1){
-                break;
-            }
-        }
-    }
-
-    }
+}
 

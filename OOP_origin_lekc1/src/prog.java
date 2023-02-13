@@ -1,4 +1,6 @@
-public class Main {
+package OOP_origin_lekc1.src;
+
+public class prog {
     public static void main(String[] args) {
         Robot1 robot_1 = new Robot1();
         System.out.printf("%s - %d lvl created\n",robot_1.getName(),robot_1.getLevel());
