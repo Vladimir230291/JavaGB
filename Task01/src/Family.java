@@ -1,11 +1,12 @@
 package Task01.src;
 
 import java.time.LocalDate;
-import java.util.Objects;
+import java.util.*;
 
 public  class Family {
     private String firstName, secondName, birthDay;
     private int familyStatus;
+    public static List<Family> families = new LinkedList<>();
 
     Family(String firstName, String secondName,int year,int mouth,int day) {
             this.firstName = firstName;
@@ -15,17 +16,7 @@ public  class Family {
         else this.birthDay = null;
         }
 
-//    public String getFirstName() {
-//        return firstName;
-//    }
 
-//    public String getSecondName() {
-//        return secondName;
-//    }
-
-//    public String getBirthDay() {
-//        return birthDay;
-//    }
 
     @Override
     public String toString() {
@@ -44,8 +35,30 @@ public  class Family {
                 && birthDay.equals(family.birthDay);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(firstName, secondName, birthDay);
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(firstName, secondName, birthDay);
+//    }public int hashCode() {
+//        return Objects.hash(firstName, secondName, birthDay);
+//    }
+
+
+    public static void PrintFamiles(){
+        if (families.isEmpty()) System.out.println("Пуфто");
+        families.forEach(System.out::println);
     }
+//    public static List addFamiles(String str){
+//        List<String> res = new ArrayList<>();
+//        res.add(str);
+//        return res;
+
+    public static List getCollection(){
+        return families;
+    }
+
 }
+
+
+
+
+
