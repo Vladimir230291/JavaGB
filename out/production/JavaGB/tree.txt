@@ -1,0 +1,1 @@
+Family{firstName='вава', secondName='вава', birthDay=1991-03-02}
