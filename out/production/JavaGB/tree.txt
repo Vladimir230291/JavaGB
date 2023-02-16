@@ -1,1 +1,1 @@
-Family{firstName='вава', secondName='вава', birthDay=1991-03-02}
+asd asd 1245-01-02

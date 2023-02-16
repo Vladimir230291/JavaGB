@@ -4,20 +4,39 @@ import java.time.LocalDate;
 import java.util.*;
 
 public  class Family {
-    private String firstName, secondName, birthDay;
-    private int familyStatus;
-    public static List<Family> families = new LinkedList<>();
+    private String firstName, secondName;
+    private LocalDate birthDay;
+
+    private List<Family> familyList = new LinkedList<>();
 
     Family(String firstName, String secondName,int year,int mouth,int day) {
             this.firstName = firstName;
             this.secondName = secondName;
         if (year < LocalDate.now().getYear() + 1 && mouth <= 12 && day <= 31)
-            this.birthDay = LocalDate.of(year, mouth, day).toString();
-        else this.birthDay = null;
+            this.birthDay = LocalDate.of(year, mouth, day);
+        else {System.out.println("Вы ввели не коректную дату рождения...\n");
+
         }
 
+        }
+    Family(){
+    }
 
+    public void addPerson (Family family){
+        this.familyList.add(family);
+    }
 
+    public LocalDate getBirthDay() {
+        return this.birthDay;
+    }
+
+    public List<Family> getFamilyList(){
+        return this.familyList;
+    }
+
+    public void LoadFamilies(List<Family> families){
+        this.familyList = families;
+    }
     @Override
     public String toString() {
         return "Family{" +
@@ -27,33 +46,24 @@ public  class Family {
                 '}';
     }
 
+    public String toSave(){
+        return String.format("%s %s %s", this.firstName, this.secondName, this.birthDay);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Family family)) return false;
-        return firstName.equals(family.firstName) && secondName.equals(family.secondName)
-                && birthDay.equals(family.birthDay);
+        return birthDay.equals(family.birthDay);
     }
 
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(firstName, secondName, birthDay);
-//    }public int hashCode() {
-//        return Objects.hash(firstName, secondName, birthDay);
-//    }
-
-
-    public static void PrintFamiles(){
-        if (families.isEmpty()) System.out.println("Пуфто");
-        families.forEach(System.out::println);
+    public void PrintFamiles(){
+        if (familyList.isEmpty()) System.out.println("Пуфто");
+        familyList.forEach(System.out::println);
     }
-//    public static List addFamiles(String str){
-//        List<String> res = new ArrayList<>();
-//        res.add(str);
-//        return res;
 
-    public static List getCollection(){
-        return families;
+    public List getCollection(){
+        return familyList;
     }
 
 }

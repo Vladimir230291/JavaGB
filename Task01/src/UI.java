@@ -1,16 +1,17 @@
 package Task01.src;
 
-import java.io.Console;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
 public class UI {
-    private static int chose;
-    public static Scanner input = new Scanner(System.in);
-    public static void startProgram() {
+    private int chose;
+    public Scanner input = new Scanner(System.in);
+    public Family family = new Family();
+
+    public void startProgram() {
         System.out.println("""
                 ___________________________FamilyThee___________________________
                                 
@@ -23,41 +24,61 @@ public class UI {
                 0. - Выйти из программы""");
     }
 
-    public static void UserChooce() throws IOException {
-
+    public void UserChooce() throws IOException {
+        chose = input.nextInt();
         while (true) {
-            chose = input.nextInt();
-            if (chose == 1) {
-                System.out.println("Введите через пробел: Имя, Фамилию, год рождения, месяц, день");
-                Family person = new Family(input.next(),input.next(), input.nextInt(), input.nextInt(), input.nextInt());
-                Family.families.add(person); // Кастыль!!!!
-                System.out.println("член семьи добавлен");
-                startProgram();
+            switch (chose) {
+                case 1:
+                    System.out.println("Введите имя члена семьи: ");
+                    String firstName = input.nextLine();
+                    System.out.println("Введите фамилию члена семьи: ");
+                    String secondName = input.nextLine();
+                    System.out.println("Введите год рождения члена семьи: ");
+                    String year = input.nextLine();
+                    System.out.println("Введите месяц рождения члена семьи: ");
+                    String mouth = input.nextLine();
+                    System.out.println("Введите день рождения члена семьи: ");
+                    String day = input.nextLine();
 
-            } else if (chose == 2) {
-                Family.PrintFamiles();
-                startProgram();
+                    if (year.length() == 4 && mouth.length() <= 2 && day.length() <= 2) {
+                        family.addPerson(new Person(firstName, secondName, Integer.parseInt(year),
+                                Integer.parseInt(mouth), Integer.parseInt(day)));
+                    } else System.out.println("Вы ввели не коректную дату рождения...\n");
+
+                    startProgram();
+
+                case 2:
+                    family.PrintFamiles();
+                    startProgram();
 
 
-            } else if (chose == 3) {
-                System.out.println("3");
-                break;
+                case 3:
+                    System.out.println("3");
+                    List<Family> f = this.family.getFamilyList();
+                    f.sort(Comparator.comparing(Family::getBirthDay));
+                    f.forEach(System.out::println);
 
-            } else if (chose == 4) {
-                System.out.println("4");
-                break;
 
-            } else if (chose == 5) {
-                List<String> familes = new ArrayList<>(SaveAndLoad.Load());
-                System.out.println("Загруженно!");
-                startProgram();
+                case 4:
+                    System.out.println("4");
+                    break;
 
-            } else if (chose == 6) {
-                SaveAndLoad.Save(Family.getCollection());
-                System.out.println("Сохранено!");
-                startProgram();
+                case 5:
+                    List<Family> familes = new ArrayList<>(SaveAndLoad.Load());
+                    this.family.LoadFamilies(familes);
+                    System.out.println("Загруженно!");
+                    startProgram();
 
-            } else break;
+
+                case 6:
+                    SaveAndLoad.Save(family.getFamilyList());
+
+                    System.out.println("Сохранено!");
+                    startProgram();
+                case 0:
+                    System.out.println("Bay!");
+                    break;
+            }
         }
     }
 
