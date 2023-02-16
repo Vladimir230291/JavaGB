@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UI {
-    private int chose;
-    public Scanner input = new Scanner(System.in);
-    public Family family = new Family();
 
-    public void startProgram() {
+    public static Scanner input = new Scanner(System.in);
+    public static Family family = new Family();
+
+    public static void startProgram() {
         System.out.println("""
                 ___________________________FamilyThee___________________________
                                 
@@ -24,63 +24,58 @@ public class UI {
                 0. - Выйти из программы""");
     }
 
-    public void UserChooce() throws IOException {
-        chose = input.nextInt();
+    public static void UserChose(int chose) throws IOException {
+
         while (true) {
-            switch (chose) {
-                case 1:
-                    System.out.println("Введите имя члена семьи: ");
-                    String firstName = input.nextLine();
-                    System.out.println("Введите фамилию члена семьи: ");
-                    String secondName = input.nextLine();
-                    System.out.println("Введите год рождения члена семьи: ");
-                    String year = input.nextLine();
-                    System.out.println("Введите месяц рождения члена семьи: ");
-                    String mouth = input.nextLine();
-                    System.out.println("Введите день рождения члена семьи: ");
-                    String day = input.nextLine();
 
-                    if (year.length() == 4 && mouth.length() <= 2 && day.length() <= 2) {
-                        family.addPerson(new Person(firstName, secondName, Integer.parseInt(year),
-                                Integer.parseInt(mouth), Integer.parseInt(day)));
-                    } else System.out.println("Вы ввели не коректную дату рождения...\n");
+            if (chose == 1) {
+                System.out.println("Введите: Имя, Фамилия, Год рождения, Месяц рождения, День рождения");
+                Person person = new Person(input.next(), input.next(), input.nextInt(),
+                        input.nextInt(), input.nextInt());
+                family.addPerson(person);
+                startProgram();
+                UserChose(input.nextInt());
 
-                    startProgram();
+            } else if (chose == 2) {
+                family.PrintFamily();
+                startProgram();
+                UserChose(input.nextInt());
 
-                case 2:
-                    family.PrintFamiles();
-                    startProgram();
+            } else if (chose == 3) {
+                List<Person> f = family.getFamilyList();
+                f.sort(Comparator.comparing(Person::getBirthDay));
+                f.forEach(System.out::println);
+                startProgram();
+                UserChose(input.nextInt());
 
+            } else if (chose == 4) {
+                System.out.println("null");
+                break;
 
-                case 3:
-                    System.out.println("3");
-                    List<Family> f = this.family.getFamilyList();
-                    f.sort(Comparator.comparing(Family::getBirthDay));
-                    f.forEach(System.out::println);
+            } else if (chose == 5) {
+                List<Person> familyList = new ArrayList<>(SaveAndLoad.Load());
+                family.LoadFamily(familyList);
+                System.out.println("Загруженно!");
+                startProgram();
+                UserChose(input.nextInt());
 
+            } else if (chose == 6) {
+                SaveAndLoad.Save(family.getFamilyList());
+                System.out.println("Сохранено!");
+                startProgram();
+                UserChose(input.nextInt());
 
-                case 4:
-                    System.out.println("4");
-                    break;
+            } else if (chose == 0) {
+                System.out.println("Выход из программы");
+                break;
 
-                case 5:
-                    List<Family> familes = new ArrayList<>(SaveAndLoad.Load());
-                    this.family.LoadFamilies(familes);
-                    System.out.println("Загруженно!");
-                    startProgram();
-
-
-                case 6:
-                    SaveAndLoad.Save(family.getFamilyList());
-
-                    System.out.println("Сохранено!");
-                    startProgram();
-                case 0:
-                    System.out.println("Bay!");
-                    break;
+            } else {
+                System.out.println("Такого пункта нет");
+                startProgram();
             }
         }
     }
-
 }
+
+
 
