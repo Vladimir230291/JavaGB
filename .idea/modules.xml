@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/FamilyTree/App/App.iml" filepath="$PROJECT_DIR$/FamilyTree/App/App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FamilyTree/FamilyTree.iml" filepath="$PROJECT_DIR$/FamilyTree/FamilyTree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FamilyTree/Interfaces/Interfaces.iml" filepath="$PROJECT_DIR$/FamilyTree/Interfaces/Interfaces.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaGB.iml" filepath="$PROJECT_DIR$/JavaGB.iml" />
     </modules>
   </component>
