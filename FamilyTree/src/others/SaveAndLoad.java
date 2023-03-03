@@ -1,3 +1,7 @@
+package others;
+
+import model.FamilyPerson;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
@@ -13,11 +17,13 @@ public class SaveAndLoad {
             String line = scanner.nextLine();
             String[] params = line.split(" ");
             if (params[3]!= null){
-                person = new FamilyPerson(params[0], params[1], params[2], LocalDate.parse(params[3]));
+                String[] age = params[3].split("-");
+                person = new FamilyPerson(params[0], params[1], params[2],
+                        Integer.parseInt(age[0]), Integer.parseInt(age[1]), Integer.parseInt(age[2]));
 
             }else{
-                person = new FamilyPerson(params[0], params[1], params[2], null);
-                            }
+                person = new FamilyPerson(params[0], params[1], params[2]);
+            }
             familyList.add(person);
             }
 
