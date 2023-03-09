@@ -27,6 +27,7 @@ public class Main {
 
         person.getParents();
         person2.getChildren();
+        familyTree.FamilyTreePrint();
 
 
 

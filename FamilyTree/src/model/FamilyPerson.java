@@ -5,8 +5,8 @@ import java.util.List;
 
 public class FamilyPerson extends Human {
 
-    private final List<FamilyPerson> parents = new ArrayList<>();
-    private final List<FamilyPerson> children = new ArrayList<>();
+    private List<FamilyPerson> parents = new ArrayList<>();
+    private List<FamilyPerson> children = new ArrayList<>();
 
 
 
@@ -23,14 +23,10 @@ public class FamilyPerson extends Human {
     }
 
     public void getChildren() {
-        for (FamilyPerson person : children) {
-            System.out.println(person.getFirstname() + " " + person.getLastname());
-        }
+        System.out.println(String.format("Список детей: %s", children));
     };
     public void getParents() {
-        for (FamilyPerson person : parents) {
-            System.out.println(person.getFirstname() + " " + person.getLastname());
-        }
+        System.out.println(String.format("Родители: %s", parents));
     }
 
     public void setParents(FamilyPerson parents) {
