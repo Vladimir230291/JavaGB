@@ -18,7 +18,6 @@ public class UI {
                 1. - Добавить нового члена семьи
                 2. - Показать полный список семьи
                 3. - Показать родствеников по старшеству
-                4. - Вополнять какие-то действия с родствениками...(не придумал)
                 5. - Загрузить последнее древо
                 6. - Сохранить текущее древо
                 0. - Выйти из программы""");
@@ -49,17 +48,13 @@ public class UI {
                 UserChose(input.nextInt());
 
             } else if (chose == 4) {
-                System.out.println("null");
-                break;
-
-            } else if (chose == 5) {
                 List<Person> familyList = new ArrayList<>(SaveAndLoad.Load());
                 family.LoadFamily(familyList);
                 System.out.println("Загруженно!");
                 startProgram();
                 UserChose(input.nextInt());
 
-            } else if (chose == 6) {
+            } else if (chose == 5) {
                 SaveAndLoad.Save(family.getFamilyList());
                 System.out.println("Сохранено!");
                 startProgram();
