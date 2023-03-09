@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.Month;
 
 public abstract class Human {
     private final String firstname;
@@ -20,6 +21,12 @@ public abstract class Human {
         this.firstname = firstname;
         this.lastname = lastname;
         this.gender = gender;
+        this.dateOfBirth = null;
+    }
+    public Human(){
+        this.firstname = null;
+        this.lastname = null;
+        this.gender = null;
         this.dateOfBirth = null;
     }
 
@@ -45,13 +52,16 @@ public abstract class Human {
         return gender;
     }
 
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
 
     private LocalDate CheckDate(int day, int month, int year) {
         if (day < 1 || day > 31) {
             return null;
         } else if (month < 1 || month > 12) {
             return null;
-        } else if (year < 1900 || year > LocalDate.now().getYear()) {
+        } else if (year > LocalDate.now().getYear()) {
             return null;
         } else {
             return LocalDate.of(year, month, day);

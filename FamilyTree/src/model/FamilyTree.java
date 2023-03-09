@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FamilyTree {
+public class FamilyTree implements IFamilyTree {
 
     List<FamilyPerson> familyList;
 
@@ -11,10 +11,15 @@ public class FamilyTree {
         familyList = new ArrayList<>();
         familyList.add(person);
     }
-    public FamilyTree(List<FamilyPerson> familyList){
-        this.familyList = familyList;
+    public FamilyTree(){
+        familyList = new ArrayList<>();
     }
     public void FamilyTreePrint(){
         familyList.forEach(System.out::println);
+    }
+
+    @Override
+    public void FamilyTreeAdd(FamilyPerson person) {
+        familyList.add(person);
     }
 }

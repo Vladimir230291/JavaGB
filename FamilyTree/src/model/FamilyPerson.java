@@ -5,8 +5,8 @@ import java.util.List;
 
 public class FamilyPerson extends Human {
 
-    private List<FamilyPerson> parents;
-    private List<FamilyPerson> children;
+    private final List<FamilyPerson> parents = new ArrayList<>();
+    private final List<FamilyPerson> children = new ArrayList<>();
 
 
 
@@ -18,30 +18,36 @@ public class FamilyPerson extends Human {
     public FamilyPerson(String firstname, String lastname, String gender) {
         super(firstname, lastname, gender);
     }
-    public List<FamilyPerson> getParents() {
-        return parents;
+    public FamilyPerson(){
+
     }
-    public List<FamilyPerson> getChildren() {
-        return children;
+
+    public void getChildren() {
+        for (FamilyPerson person : children) {
+            System.out.println(person.getFirstname() + " " + person.getLastname());
+        }
+    };
+    public void getParents() {
+        for (FamilyPerson person : parents) {
+            System.out.println(person.getFirstname() + " " + person.getLastname());
+        }
     }
+
     public void setParents(FamilyPerson parents) {
-        parents.add(parents);
+        this.parents.add(parents);
+    }
+    public void setParents(FamilyPerson parents, FamilyPerson parents2) {
+        this.parents.add(parents);
+        this.parents.add(parents2);
     }
     public void setChildren(FamilyPerson children) {
-        children.add(children);
+        this.children.add(children);
     }
-
-    public void add(FamilyPerson parent) {
-        this.parents.add(parent);
-    }
-
     @Override
     public String toString() {
-        return "FamilyPerson{" +
-                "parents=" + parents +
-                ", children=" + children +
-                '}';
-    }
+        return String.format("Имя: %s \nФамилия:%s \nпол:(%s) \nДата рождения: %s",
+                super.getFirstname(), super.getLastname(), super.getGender(), super.getDateOfBirth());
+        }
 }
 
 
